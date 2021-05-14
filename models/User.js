@@ -3,7 +3,13 @@ const { Schema, model } = require("mongoose");
 const comicSchema = require("./Comic");
 
 const UserSchema = new Schema({
-    username: {
+    fullName: {
+        type: String,
+        required: true,
+        unique: true,
+    },
+
+    email: {
         type: String,
         required: true,
         unique: true,
