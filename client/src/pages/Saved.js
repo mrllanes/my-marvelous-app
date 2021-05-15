@@ -18,7 +18,7 @@ export const Saved = () => {
 
     return (
         <div className="container">
-            <h1>These Are Your Saved Books</h1>
+            <h1>Your Comic Collection</h1>
         </div>
     );
 };

@@ -10,7 +10,7 @@ export const Search = () => {
         API.searchComics(searchWord)
             .then((results) => {
                 console.log(results);
-                setBooks(results.data);
+                setComics(results.data);
             })
             .catch(() => {
                 setComics([]);
@@ -38,7 +38,7 @@ export const Search = () => {
                     class="btn btn-outline-secondary"
                     type="button"
                     id="button-addon2"
-                    onClick={searchBooks}
+                    onClick={searchComics}
                 >
                     Search
                 </button>

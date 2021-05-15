@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Heading() {
+export const Heading = () => {
     return (
         <div>
             <div className="container">
@@ -19,4 +19,4 @@ export default function Heading() {
             </div>
         </div>
     );
-}
+};
