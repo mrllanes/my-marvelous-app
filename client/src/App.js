@@ -2,6 +2,7 @@ import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Main } from "./layouts/Main";
 import { Search, Saved } from "./pages";
+import marvelBackground from "./assets/marvelBackground.jpg";
 
 function App() {
     return (

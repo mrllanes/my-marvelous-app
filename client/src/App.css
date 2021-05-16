@@ -1,38 +1,114 @@
 .App {
-  text-align: center;
+    text-align: center;
 }
 
 .App-logo {
-  height: 40vmin;
-  pointer-events: none;
+    height: 40vmin;
+    pointer-events: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/*Semantic definitions*/
+body {
+    background-color: red;
+    background-size: 100% 100%;
+    color: snow;
+    min-height: 100vh;
+    background-image: url(./assets/marvelBackground.jpg);
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+span {
+    font-style: italic;
 }
 
-.App-link {
-  color: #61dafb;
+nav {
+    color: white;
+    z-index: 10;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+div {
+    padding: 5px;
+}
+
+img {
+    margin: 10px;
+}
+
+/*Class definitions*/
+.bg-light {
+    background-color: red !important;
+}
+
+.sr-only {
+    position: relative;
+}
+
+.col-list {
+    border: 3px solid black;
+}
+
+.heading {
+    background-color: gray;
+    background-blend-mode: luminosity;
+}
+
+.img-thumbnail {
+    height: 170px;
+}
+
+.navbar .navbar-nav {
+    /* display: inline-block; */
+    float: none;
+    vertical-align: top;
+}
+
+.navbar .navbar-collapse {
+    text-align: center;
+}
+
+.navbar-center {
+    position: absolute;
+    left: 50%;
+    transform: translatex(-50%);
+}
+
+.card {
+    color: black;
+    background-color: lightgray;
+}
+
+#name {
+    /* position: absolute; */
+    /* left: 25%; */
+    /* transform: translatex(-25%); */
+    margin-right: 2px;
+    letter-spacing: 4px;
+}
+
+@font-face {
+    font-family: "BADABB_";
+    src: local("BADABB_"), url(./font/BADABB__.TTF) format("truetype");
+    /* other formats include: 'woff2', 'truetype, 'opentype',
+                              'embedded-opentype', and 'svg' */
+}
+
+@font-face {
+    font-family: "Comic-ink";
+    src: local("Comic-ink"), url(./font/Comic-ink.ttf) format("truetype");
+    /* other formats include: 'woff2', 'truetype, 'opentype',
+                              'embedded-opentype', and 'svg' */
+}
+
+h1,
+h2 {
+    font-family: "BADABB_", Arial, sans-serif;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: expanded;
+}
+
+blockquote {
+    text-align: left;
+    font-family: "Comic-ink", Arial, sans-serif;
+    font-weight: normal;
+    font-style: normal;
 }

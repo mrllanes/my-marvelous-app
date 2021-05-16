@@ -2,17 +2,17 @@ import { useEffect, useState } from "react";
 import API from "../utils/API";
 
 export const Saved = () => {
-    const [books, setBooks] = useState([]);
+    const [comics, setComics] = useState([]);
 
     // Load all books and store them with setBooks
     useEffect(() => {
-        loadBooks();
+        loadComics();
     }, []);
 
     // Loads all books and sets them to books
-    function loadBooks() {
-        API.getBooks()
-            .then((res) => setBooks(res.data))
+    function loadComics() {
+        API.getComics()
+            .then((res) => setComics(res.data))
             .catch((err) => console.log(err));
     }
 

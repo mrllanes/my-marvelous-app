@@ -7,7 +7,7 @@ export const Search = () => {
     const [searchWord, setSearchWord] = useState("");
 
     const searchComics = () => {
-        API.searchComics(searchWord)
+        API.getComics(searchWord)
             .then((results) => {
                 console.log(results);
                 setComics(results.data);
@@ -23,7 +23,7 @@ export const Search = () => {
 
     return (
         <>
-            <div className="container text-center">
+            <div className="container text-center col-3">
                 <input
                     type="text"
                     class="form-control"

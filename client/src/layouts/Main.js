@@ -1,11 +1,11 @@
 import { Outlet } from "react-router-dom";
-// import { Navbar } from "../components/Navbar";
+import { Navbar } from "../components/Navbar";
 import { Heading } from "../components/Heading";
 
 export const Main = () => {
     return (
         <div>
-            {/* <Navbar /> */}
+            <Navbar />
             <Heading />
             <Outlet />
         </div>
