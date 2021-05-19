@@ -11,9 +11,6 @@ app.use("/api", postRoutes);
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-// const CONNECTION_URL =
-//     "mongodb+srv://poweruser:password42@cluster0.wgbj6.mongodb.net/marvelousapp?retryWrites=true&w=majority";
-
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
     app.use(express.static("client/build"));

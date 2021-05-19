@@ -9,16 +9,27 @@ export const Search = () => {
     const searchComics = () => {
         API.getComics(searchWord)
             .then((results) => {
-                console.log(results);
-                setComics(results.data);
+                console.log(results.data.data.results);
+                setComics(results.data.data.results);
             })
-            .catch(() => {
+            .catch((error) => {
+                console.log(error);
                 setComics([]);
             });
     };
 
     const handleInput = (e) => {
         setSearchWord(e.target.value);
+    };
+
+    const saveComic = (data) => {
+        API.saveComic({
+            title: data.title,
+            series: data.series.name,
+            author: data.author,
+            description: data.description,
+            image: data.thumbnail.path,
+        });
     };
 
     return (
@@ -46,14 +57,15 @@ export const Search = () => {
             <div className="container text-center">
                 <div className="row">
                     <div className="col">
-                        {comics.map((data, id) => (
+                        {comics.map((data) => (
                             <div key={data.id} classname="col">
                                 <ComicCard
-                                // title={data.title}
-                                // author={data.author}
-                                // description={data.description}
-                                // image={data.image}
-                                // link={data.link}
+                                    title={data.title}
+                                    series={data.series.name}
+                                    author={data.author}
+                                    description={data.description}
+                                    image={data.thumbnail.path}
+                                    comicSave={() => saveComic(data)}
                                 />
                             </div>
                         ))}

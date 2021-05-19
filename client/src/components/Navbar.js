@@ -1,8 +1,12 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import cn from "classnames";
+import { Typography, Avatar, Toolbar, Button } from "@material-ui/core";
+import useStyles from "./styles";
 
 export const Navbar = () => {
+    const classes = useStyles();
+
     // const [showLinks, setShowLinks] = useState(false);
     const location = useLocation();
 
@@ -49,6 +53,41 @@ export const Navbar = () => {
                         </Link>
                     </li>
                 </ul>
+                {/* <Toolbar className={classes.toolbar}>
+                    {user ? (
+                        <div className={classes.profile}>
+                            <Avatar
+                                className={classes.purple}
+                                alt={user.result.name}
+                                src={user.result.imageUrl}
+                            >
+                                {user.result.name.charAt(0)}
+                            </Avatar>
+                            <Typography
+                                className={classes.username}
+                                variant="h6"
+                            >
+                                {user.result.name}
+                            </Typography>
+                            <Button
+                                varient="contained"
+                                className={classes.logout}
+                                color="secondary"
+                            >
+                                Depart
+                            </Button>
+                        </div>
+                    ) : (
+                        <Button
+                            component={Link}
+                            to="/auth"
+                            variant="contained"
+                            color="primary"
+                        >
+                            Enter
+                        </Button>
+                    )}
+                </Toolbar> */}
             </div>
         </nav>
     );

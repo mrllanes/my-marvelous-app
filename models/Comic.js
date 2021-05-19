@@ -2,21 +2,25 @@ const bcrypt = require("bcryptjs");
 const { Schema, model } = require("mongoose");
 
 const ComicSchema = new Schema({
-    fullName: {
+    title: {
         type: String,
         required: true,
-        unique: true,
     },
 
-    email: {
+    description: {
         type: String,
-        required: true,
-        unique: true,
     },
 
-    password: {
+    image: {
         type: String,
-        required: true,
+    },
+
+    authors: {
+        type: Array,
+    },
+
+    series: {
+        type: String,
     },
 });
 

@@ -1,11 +1,11 @@
 import axios from "axios";
-const APIKey = "e30306445f5a20c4ef306d95f0cb7c0c3cf8c3e5";
+const APIKey = "df6b588924aeb6d7464567744be992e3";
 
 export default {
     // Gets all comics
     getComics: function (searchWord) {
         return axios.get(
-            `https://gateway.marvel.com/v1/public/comics?title=${searchWord}&apikey=${APIKey}`
+            `https://gateway.marvel.com:443/v1/public/comics?upc=${searchWord}&apikey=${APIKey}`
         );
     },
     // Gets the comic with the given id
