@@ -9,19 +9,11 @@ export const BarcodeScanner = () => {
     const [error, setError] = useState();
     const [scanning, setScanning] = useState(false);
     const barcodeRef = useRef(null);
-    useEffect(() => {
-        console.log("test");
-        const handleDetected = (result) => {
-            console.log(result);
-            setResults([...result]);
-        };
-        Quagga.onDetected(handleDetected);
-        return function cleanup() {
-            console.log("Cleanup");
-            Quagga.offDetected(handleDetected);
-            setScanning(false);
-        };
-    }, []);
+
+    const handleDetected = (result) => {
+        console.log(result);
+        setResults([...result]);
+    };
     const startQuagga = () => {
         Quagga.init(quaggaConfig, (err) => {
             if (err) {
@@ -31,6 +23,8 @@ export const BarcodeScanner = () => {
             setScanning(true);
             Quagga.start();
         });
+        Quagga.onDetected(handleDetected);
+        Quagga.offDetected(handleDetected);
     };
     return (
         <div>
