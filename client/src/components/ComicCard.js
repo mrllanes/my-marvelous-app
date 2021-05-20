@@ -31,7 +31,14 @@ export const ComicCard = ({
                         <div className="card-body">
                             <h4 className="card-title">{title}</h4>
                             <h5 className="series">Series: {series}</h5>
-                            <h5 className="creators">{creators}</h5>
+                            {creators.map((creator) => (
+                                <h5
+                                    className="creators"
+                                    key={creator.resourceURI}
+                                >
+                                    {creator.name} {creator.role}
+                                </h5>
+                            ))}
                             <p className="card-text">{description}</p>
                             <p className="card-text">
                                 <button onClick={comicSave}>
