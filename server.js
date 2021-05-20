@@ -1,13 +1,12 @@
-const path = require("path");
-const express = require("express");
-const mongoose = require("mongoose");
-import postRoutes from "./routes/posts.js";
+import path from "path";
+import express from "express";
+import mongoose from "mongoose";
+import routes from "./routes/posts.js";
 
 const app = express();
 const PORT = process.env.PORT || 3001;
 
 // Define middleware here
-app.use("/api", postRoutes);
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
@@ -23,15 +22,13 @@ mongoose.connect(
         useNewUrlParser: true,
         useUnifiedTopology: true,
         useFindAndModify: false,
-        useMongoClient: true,
     }
 );
 
 // mongoose.Promise = global.Promise;
-const db = mongoose.connection;
+// const db = mongoose.connection;
 
-// API routes
-app.use(routes);
+app.use("/api", routes);
 
 // Send every other request to the React app
 // Define any API routes before this runs

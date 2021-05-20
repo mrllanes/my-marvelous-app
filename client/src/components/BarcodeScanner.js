@@ -20,10 +20,12 @@ export const BarcodeScanner = () => {
                 setError(err);
                 return console.log(err);
             }
+            console.log("WORRRKKKK");
             setScanning(true);
             Quagga.start();
         });
         Quagga.onDetected(handleDetected);
+        Quagga.onProcessed((data) => console.log(data));
         Quagga.offDetected(handleDetected);
     };
     return (
