@@ -26,10 +26,12 @@ export const Search = () => {
         API.saveComic({
             title: data.title,
             series: data.series.name,
-            author: data.author,
+            creators: data.creators.items,
             description: data.description,
             image: data.thumbnail.path,
-        });
+        })
+            .then((res) => console.log(res))
+            .catch((err) => console.log(err));
     };
 
     return (
@@ -39,7 +41,7 @@ export const Search = () => {
                     type="text"
                     class="form-control"
                     id="searchWord"
-                    placeholder="Search for a Book!"
+                    placeholder="Search for a Marvel Comic!"
                     value={searchWord}
                     onChange={handleInput}
                     aria-label="Search"
@@ -62,7 +64,7 @@ export const Search = () => {
                                 <ComicCard
                                     title={data.title}
                                     series={data.series.name}
-                                    author={data.author}
+                                    creators={data.creators.items}
                                     description={data.description}
                                     image={data.thumbnail.path}
                                     comicSave={() => saveComic(data)}

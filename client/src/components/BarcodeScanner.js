@@ -1,58 +1,67 @@
-import React, { Component } from "react";
-import Scanner from "./Scanner";
+import React, { useState, useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
+import Quagga from "quagga";
 import { Fab, TextareaAutosize, Paper } from "@material-ui/core";
 import { ArrowBack } from "@material-ui/icons";
-import { Link } from "react-router-dom";
-
-class BarcodeScanner extends Component {
-    state = {
-        results: [],
+import { quaggaConfig } from "../config/quagga";
+export const BarcodeScanner = () => {
+    const [results, setResults] = useState([]);
+    const [error, setError] = useState();
+    const [scanning, setScanning] = useState(false);
+    const barcodeRef = useRef(null);
+    useEffect(() => {
+        console.log("test");
+        const handleDetected = (result) => {
+            console.log(result);
+            setResults([...result]);
+        };
+        Quagga.onDetected(handleDetected);
+        return function cleanup() {
+            console.log("Cleanup");
+            Quagga.offDetected(handleDetected);
+            setScanning(false);
+        };
+    }, []);
+    const startQuagga = () => {
+        Quagga.init(quaggaConfig, (err) => {
+            if (err) {
+                setError(err);
+                return console.log(err);
+            }
+            setScanning(true);
+            Quagga.start();
+        });
     };
-
-    _scan = () => {
-        this.setState({ scanning: !this.state.scanning });
-    };
-
-    _onDetected = (result) => {
-        this.setState({ results: [] });
-        this.setState({ results: this.state.results.concat([result]) });
-    };
-
-    render() {
-        return (
-            <div>
-                <Link to="/">
-                    <Fab style={{ marginRight: 10 }} color="secondary">
-                        <ArrowBack />
-                    </Fab>
-                </Link>
-                <span>Barcode Scanner</span>
-
-                <Paper
-                    variant="outlined"
-                    style={{ marginTop: 30, width: 640, height: 320 }}
-                >
-                    <Scanner onDetected={this._onDetected} />
-                </Paper>
-
-                <TextareaAutosize
-                    style={{
-                        fontSize: 32,
-                        width: 320,
-                        height: 100,
-                        marginTop: 30,
-                    }}
-                    rowsMax={4}
-                    defaultValue={"No data scanned"}
-                    value={
-                        this.state.results[0]
-                            ? this.state.results[0].codeResult.code
-                            : "No data scanned"
-                    }
-                />
-            </div>
-        );
-    }
-}
-
-export default BarcodeScanner;
+    return (
+        <div>
+            <Link to="/">
+                <Fab style={{ marginRight: 10 }} color="secondary">
+                    <ArrowBack />
+                </Fab>
+            </Link>
+            <span>Barcode Scanner</span>
+            <button type="button" onClick={startQuagga}>
+                Scan Barcode
+            </button>
+            <Paper
+                variant="outlined"
+                style={{ marginTop: 30, width: 640, height: 320 }}
+            >
+                <div id="interactive" className="viewport" />
+            </Paper>
+            <TextareaAutosize
+                style={{
+                    fontSize: 32,
+                    width: 320,
+                    height: 100,
+                    marginTop: 30,
+                }}
+                rowsMax={4}
+                defaultValue={"No data scanned"}
+                value={
+                    results[0] ? results[0].codeResult.code : "No data scanned"
+                }
+            />
+        </div>
+    );
+};

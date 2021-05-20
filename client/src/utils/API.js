@@ -5,7 +5,7 @@ export default {
     // Gets all comics
     getComics: function (searchWord) {
         return axios.get(
-            `https://gateway.marvel.com:443/v1/public/comics?upc=${searchWord}&apikey=${APIKey}`
+            `https://gateway.marvel.com:443/v1/public/comics?upc=${searchWord}&ts=1&apikey=${APIKey}&hash=fc34bd0ffc64217164c430ae5be664b2`
         );
     },
     // Gets the comic with the given id

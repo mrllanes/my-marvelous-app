@@ -15,7 +15,7 @@ const ComicSchema = new Schema({
         type: String,
     },
 
-    authors: {
+    creators: {
         type: Array,
     },
 

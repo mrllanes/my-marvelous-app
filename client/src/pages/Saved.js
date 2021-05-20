@@ -4,12 +4,12 @@ import API from "../utils/API";
 export const Saved = () => {
     const [comics, setComics] = useState([]);
 
-    // Load all books and store them with setBooks
+    // Load all comics and store them with setComics
     useEffect(() => {
         loadComics();
     }, []);
 
-    // Loads all books and sets them to books
+    // Loads all comics and sets them to comics
     function loadComics() {
         API.getComics()
             .then((res) => setComics(res.data))
