@@ -1,23 +1,20 @@
 import React, { useState } from "react";
-import BarcodeReader from "react-barcode-reader";
+import BarcodeScannerComponent from "react-webcam-barcode-scanner";
 
 export const BarcodeScanner = () => {
-    const [result, setResult] = useState([]);
-    const [error, setError] = useState(false);
-    const handleScan = (data) => {
-        setResult(data);
-    };
-    const handleError = (err) => {
-        console.error(err);
-        setError(err);
-    };
+    const [data, setData] = React.useState("Not Found");
+
     return (
         <>
-            {error}
-            <div>
-                <BarcodeReader onError={handleError} onScan={handleScan} />
-                <p>{result}</p>
-            </div>
+            <BarcodeScannerComponent
+                width={500}
+                height={500}
+                onUpdate={(err, result) => {
+                    if (result) setData(result.text);
+                    else setData("Not Found");
+                }}
+            />
+            <p>{data}</p>{" "}
         </>
     );
 };
