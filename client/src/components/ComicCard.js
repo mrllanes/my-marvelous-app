@@ -1,5 +1,7 @@
 //Do I need to import something for this?????
 
+import { blue } from "@material-ui/core/colors";
+
 export const ComicCard = ({
     title,
     creators,
@@ -16,6 +18,11 @@ export const ComicCard = ({
         width: "150px",
     };
 
+    const creatorStyle = {
+        color: "blue",
+        textAlign: "left",
+    };
+
     return (
         <>
             <div className="card mb-3" style={cardStyleWidth}>
@@ -29,16 +36,19 @@ export const ComicCard = ({
                     </div>
                     <div className="col-md-8">
                         <div className="card-body">
-                            <h4 className="card-title">{title}</h4>
-                            <h5 className="series">Series: {series}</h5>
-                            {creators.map((creator) => (
-                                <h5
-                                    className="creators"
-                                    key={creator.resourceURI}
-                                >
-                                    {creator.name} {creator.role}
-                                </h5>
-                            ))}
+                            <h5 className="card-title">{title}</h5>
+                            <strong className="series">Series: {series}</strong>
+                            <dl>
+                                {creators.map((creator) => (
+                                    <dd
+                                        className="creators"
+                                        style={creatorStyle}
+                                        key={creator.resourceURI}
+                                    >
+                                        - {creator.name} ({creator.role})
+                                    </dd>
+                                ))}
+                            </dl>
                             <p className="card-text">{description}</p>
                             <p className="card-text">
                                 <button onClick={comicSave}>

@@ -14,6 +14,13 @@ body {
     color: snow;
     min-height: 100vh;
     background-image: url(./assets/marvelBackground.jpg);
+    background-position: right;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+button {
+    padding: 3px;
 }
 
 span {

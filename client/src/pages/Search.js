@@ -1,6 +1,7 @@
 import { useState } from "react";
 import API from "../utils/API";
 import { ComicCard } from "../components/ComicCard";
+import { Link } from "react-router-dom";
 
 export const Search = () => {
     const [comics, setComics] = useState([]);
@@ -37,24 +38,35 @@ export const Search = () => {
     return (
         <>
             <div className="container text-center col-3">
-                <input
-                    type="text"
-                    class="form-control"
-                    id="searchWord"
-                    placeholder="Search for a Marvel Comic!"
-                    value={searchWord}
-                    onChange={handleInput}
-                    aria-label="Search"
-                    aria-describedby="button-addon2"
-                />
-                <button
-                    class="btn btn-outline-secondary"
-                    type="button"
-                    id="button-addon2"
-                    onClick={searchComics}
-                >
-                    Search
-                </button>
+                <div className="row">
+                    <input
+                        type="text"
+                        class="form-control"
+                        id="searchWord"
+                        placeholder="Enter 17 Digit UPC Code!"
+                        value={searchWord}
+                        onChange={handleInput}
+                        aria-label="Search"
+                        aria-describedby="button-addon2"
+                    />
+                    <button
+                        class="btn btn-outline-secondary"
+                        type="button"
+                        id="button-addon2"
+                        onClick={searchComics}
+                    >
+                        <strong>Search</strong>
+                    </button>
+                    <Link to="/barcode_scanner">
+                        <button
+                            class="btn btn-outline-danger"
+                            type="button"
+                            id="button-addon2"
+                        >
+                            ** Experimental Barcode Scanner! **
+                        </button>
+                    </Link>
+                </div>
             </div>
             <div className="container text-center">
                 <div className="row">
