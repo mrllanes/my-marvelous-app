@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import API from "../utils/API";
+import { ComicCard } from "../components/ComicCard";
 
 export const Saved = () => {
     const [comics, setComics] = useState([]);
@@ -18,7 +19,23 @@ export const Saved = () => {
 
     return (
         <div className="container">
-            <h1>Your Comic Collection</h1>
+            <h1>Your MARVELous Collection</h1>
+            <div className="row">
+                <div className="col">
+                    {comics.map((data, i) => (
+                        <div key={data.id} className="col">
+                            <ComicCard
+                                title={data.title}
+                                series={data.series.name}
+                                creators={data.creators.items}
+                                description={data.description}
+                                image={data.thumbnail.path}
+                                // comicSave={() => saveComic(data)}
+                            />
+                        </div>
+                    ))}
+                </div>
+            </div>
         </div>
     );
 };

@@ -72,7 +72,7 @@ export const Search = () => {
                 <div className="row">
                     <div className="col">
                         {comics.map((data) => (
-                            <div key={data.id} classname="col">
+                            <div key={data.id} className="col">
                                 <ComicCard
                                     title={data.title}
                                     series={data.series.name}
